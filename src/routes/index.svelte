@@ -1,46 +1,66 @@
 <style>
-	h1, figure, p {
-		text-align: center;
-		margin: 0 auto;
+	nav {
+		position: fixed;
+		top: 0;
+		left: 0;
+		right: 0;
+		display: flex;
+		justify-content: space-between;
+		align-items: flex-start;
+		padding: 16px;
 	}
 
-	h1 {
-		font-size: 2.8em;
-		text-transform: uppercase;
-		font-weight: 700;
-		margin: 0 0 0.5em 0;
+	nav button {
+		padding: 0 16px;
+		border: none;
+		background: none;
+		color: white;
+		font-family: 'Abril Fatface';
+		font-size: 24px;
 	}
 
-	figure {
-		margin: 0 0 1em 0;
+	nav h1 {
+		margin: 0;
+		color: white;
+		font-size: 48px;
 	}
 
-	img {
-		width: 100%;
-		max-width: 400px;
-		margin: 0 0 1em 0;
+	.photo {
+		position: fixed;
+		top: 0;
+		max-width: 50%;
 	}
 
-	p {
-		margin: 1em auto;
+	.photo:first-of-type {
+		left: 0;
 	}
 
-	@media (min-width: 480px) {
-		h1 {
-			font-size: 4em;
-		}
+	.photo:last-of-type {
+		right: 0;
+	}
+
+	.bottom-button {
+		position: fixed;
+		left: 50%;
+		bottom: 16px;
+		padding: 8px 16px;
+		transform: translateX(-50%);
 	}
 </style>
 
 <svelte:head>
-	<title>Sapper project template</title>
+	<title>Home</title>
 </svelte:head>
 
-<h1>Great success!</h1>
+<img class="photo" alt='masha' src="/masha.jpeg" />
+<img class="photo" alt='katya' src="/katya.jpeg" />
 
-<figure>
-	<img alt='Success Kid' src='successkid.jpg'>
-	<figcaption>Have fun with Sapper!</figcaption>
-</figure>
+<nav>
+	<button>Menu</button>
+	<h1>Vladislav Lukinov</h1>
+	<button>Contacts</button>
+</nav>
 
-<p><strong>Try editing this file (src/routes/index.svelte) to test live reloading.</strong></p>
+<a class="bottom-button" href="/">
+	<img alt='arrow bottom' src="/arrow-bottom.svg" />
+</a>
