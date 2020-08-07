@@ -1,5 +1,11 @@
 @import url("https://fonts.googleapis.com/css?family=Abril+Fatface|Mukta+Mahee");
 
+html,
+body,
+#sapper {
+  height: 100%;
+}
+
 body {
   margin: 0;
   font-family: "Abril Fatface", cursive;
