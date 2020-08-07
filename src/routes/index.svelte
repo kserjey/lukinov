@@ -25,18 +25,20 @@
 		font-size: 48px;
 	}
 
-	.photo {
+	.background {
 		position: fixed;
 		top: 0;
-		max-width: 50%;
-	}
-
-	.photo:first-of-type {
 		left: 0;
+		display: flex;
+		width: 100%;
+		height: 100%;
 	}
 
-	.photo:last-of-type {
-		right: 0;
+	.background img {
+		flex: 1;
+		max-width: 100%;
+		height: auto;
+		object-fit: cover;
 	}
 
 	.bottom-button {
@@ -52,8 +54,10 @@
 	<title>Home</title>
 </svelte:head>
 
-<img class="photo" alt='masha' src="/masha.jpeg" />
-<img class="photo" alt='katya' src="/katya.jpeg" />
+<div class="background">
+	<img alt='masha' src="/masha.jpeg" />
+	<img alt='katya' src="/katya.jpeg" />
+</div>
 
 <nav>
 	<button>Menu</button>
@@ -61,6 +65,6 @@
 	<button>Contacts</button>
 </nav>
 
-<a class="bottom-button" href="/">
+<a class="bottom-button" href="/albums">
 	<img alt='arrow bottom' src="/arrow-bottom.svg" />
 </a>
