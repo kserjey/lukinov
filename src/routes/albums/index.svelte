@@ -28,7 +28,6 @@
   
   .year-albums h2 {
     width: 372px;
-    margin: 0;
     padding-left: 72px;
     font-size: 72px;
   }
@@ -46,17 +45,14 @@
     max-width: 100%;
   }
 
-  .album p {
+  .album time {
     margin-top: 32px;
     margin-bottom: 8px;
-    line-height: 1em;
     font-size: 18px;
   }
 
   .album h3 {
-    margin: 0;
     color: #b2b1b1;
-    line-height: 1em;
     font-size: 18px;
   }
 </style>
@@ -70,7 +66,7 @@
           <a href="/albums/{album.id}">
             <img alt="album cover" src="/katya.jpeg" />
           </a>
-          <p>{formatDate(album.date)}</p>
+          <time>{formatDate(album.date)}</time>
           <h3>{album.name}</h3>
         </article>
       {/each}
