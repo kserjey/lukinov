@@ -8,8 +8,8 @@ body,
 
 body {
   margin: 0;
-  font-family: "Abril Fatface", cursive;
-  font-size: 14px;
+  font-family: "Mukta Mahee", sans-serif;
+  font-size: 18px;
   line-height: 1.5;
 }
 
@@ -19,7 +19,11 @@ a {
 
 h1,
 h2,
-h3,
+h3 {
+  margin: 0;
+  font-family: "Abril Fatface", cursive;
+}
+
 p {
   margin: 0;
 }
