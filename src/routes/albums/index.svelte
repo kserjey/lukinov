@@ -1,15 +1,17 @@
 <script context="module">
-	export function preload({ params, query }) {
-		return this.fetch(`albums.json`).then(r => r.json()).then(albums => {
-			return { albums };
-		});
-	}
+  export function preload({ params, query }) {
+    return this.fetch(`albums.json`)
+      .then((r) => r.json())
+      .then((albums) => {
+        return { albums };
+      });
+  }
 </script>
 
 <script>
-  import { formatDate } from './_formatDate';
+  import { formatDate } from "./_formatDate";
   export let albums;
-  
+
   $: albumsByYear = albums.reduce((acc, album) => {
     const year = new Date(album.date).getFullYear();
     if (!acc[year]) return { ...acc, [year]: [album] };
@@ -25,13 +27,13 @@
     align-items: flex-start;
     margin: 32px 0;
   }
-  
+
   .year-albums h2 {
     width: 372px;
     padding-left: 72px;
     font-size: 72px;
   }
-  
+
   .albums {
     flex: 1;
     display: grid;
@@ -54,6 +56,7 @@
   .album h3 {
     color: #b2b1b1;
     font-size: 18px;
+    font-family: "Mukta Mahee", sans-serif;
   }
 </style>
 
@@ -66,7 +69,7 @@
           <a href="/albums/{album.id}">
             <img alt="album cover" src="/katya.jpeg" />
           </a>
-          <time>{formatDate(album.date)}</time>
+          <time datetime={album.date}>{formatDate(album.date)}</time>
           <h3>{album.name}</h3>
         </article>
       {/each}
