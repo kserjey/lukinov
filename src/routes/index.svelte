@@ -1,28 +1,11 @@
 <style>
-	nav {
+	h1 {
 		position: fixed;
 		top: 0;
-		left: 0;
-		right: 0;
-		display: flex;
-		justify-content: space-between;
-		align-items: flex-start;
-		padding: 16px;
-	}
-
-	nav button {
-		padding: 0 16px;
-		border: none;
-		background: none;
-		color: white;
-		font-family: 'Abril Fatface';
-		font-size: 24px;
-	}
-
-	nav h1 {
-		margin: 0;
+		left: 50%;
 		color: white;
 		font-size: 48px;
+		transform: translate(-50%);
 	}
 
 	.background {
@@ -57,9 +40,7 @@
 </div>
 
 <nav>
-	<button>Menu</button>
 	<h1>Vladislav Lukinov</h1>
-	<button>Contacts</button>
 </nav>
 
 <a class="bottom-button" href="/albums">
