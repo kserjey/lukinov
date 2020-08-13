@@ -48,6 +48,7 @@
   .description {
     color: #b2b1b1;
     font-size: 32px;
+    font-family: "Abril Fatface", cursive;
   }
 
   .model-name {
@@ -64,6 +65,10 @@
 
   .outro h2 {
     font-size: 24px;
+  }
+
+  .outro time {
+    color: #b2b1b1;
   }
 
   .location {
@@ -85,6 +90,7 @@
   {/each}
   <div class="outro">
     <h2>{album.name}</h2>
+    <time datetime={album.date}>{formatDate(album.date)}</time>
     <p class="model-name">{album.model}</p>
     <p class="location">{album.location}</p>
   </div>
