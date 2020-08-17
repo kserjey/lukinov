@@ -1,6 +1,9 @@
-import { albums } from "./_albums";
+import { database } from "../../database";
 
-export function get(req, res) {
+export async function get(req, res) {
+  const db = await database;
+  const albums = await db.all("SELECT * FROM Album");
+
   res.writeHead(200, {
     "Content-Type": "application/json",
   });
