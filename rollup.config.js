@@ -84,6 +84,7 @@ export default {
         dev,
       }),
       resolve({
+        browser: true,
         dedupe: ["svelte"],
       }),
       commonjs(),
