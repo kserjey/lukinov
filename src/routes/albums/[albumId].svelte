@@ -12,7 +12,7 @@
 </script>
 
 <script>
-  import { formatDate } from "./_formatDate";
+  import { formatDate } from './_formatDate';
   export let album;
 </script>
 
@@ -48,7 +48,7 @@
   .description {
     color: #b2b1b1;
     font-size: 32px;
-    font-family: "Abril Fatface", cursive;
+    font-family: 'Abril Fatface', cursive;
   }
 
   .model-name {
@@ -85,9 +85,7 @@
     <time datetime={album.date}>{formatDate(album.date)}</time>
     <p class="model-name">{album.model}</p>
   </div>
-  {#each Array.from({ length: 5 }) as photo}
-    <img src="/katya.jpeg" />
-  {/each}
+  {#each Array.from({ length: 5 }) as photo}<img src="/katya.jpeg" />{/each}
   <div class="outro">
     <h2>{album.name}</h2>
     <time datetime={album.date}>{formatDate(album.date)}</time>

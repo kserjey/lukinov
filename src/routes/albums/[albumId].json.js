@@ -1,5 +1,5 @@
-import sql from "sql-template-strings";
-import { database } from "../../database";
+import sql from 'sql-template-strings';
+import { database } from '../../database';
 
 export async function get(req, res, next) {
   const { albumId } = req.params;
@@ -8,13 +8,13 @@ export async function get(req, res, next) {
 
   if (album) {
     res.writeHead(200, {
-      "Content-Type": "application/json",
+      'Content-Type': 'application/json',
     });
 
     res.end(JSON.stringify(album));
   } else {
     res.writeHead(404, {
-      "Content-Type": "application/json",
+      'Content-Type': 'application/json',
     });
 
     res.end(

@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css?family=Abril+Fatface|Mukta+Mahee");
+@import url('https://fonts.googleapis.com/css?family=Abril+Fatface|Mukta+Mahee');
 
 html,
 body,
@@ -8,7 +8,7 @@ body,
 
 body {
   margin: 0;
-  font-family: "Mukta Mahee", sans-serif;
+  font-family: 'Mukta Mahee', sans-serif;
   font-size: 18px;
   line-height: 1.5;
 }
@@ -21,7 +21,7 @@ h1,
 h2,
 h3 {
   margin: 0;
-  font-family: "Abril Fatface", cursive;
+  font-family: 'Abril Fatface', cursive;
 }
 
 p {

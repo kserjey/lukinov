@@ -9,7 +9,7 @@
 </script>
 
 <script>
-  import { formatDate } from "./_formatDate";
+  import { formatDate } from './_formatDate';
   export let albums;
 
   $: albumsByYear = albums.reduce((acc, album) => {
@@ -56,7 +56,7 @@
   .album h3 {
     color: #b2b1b1;
     font-size: 18px;
-    font-family: "Mukta Mahee", sans-serif;
+    font-family: 'Mukta Mahee', sans-serif;
   }
 </style>
 
