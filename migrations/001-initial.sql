@@ -18,8 +18,8 @@ CREATE TABLE Photo (
 );
 
 INSERT INTO Album (name, description, date, location, model)
-  VALUES 
-    ('First', 'My first album!', '2017-06-22T00:00:00.000Z', 'ST. PETERSBURG', 'Katya')
+  VALUES
+    ('First', 'My first album!', '2017-06-22T00:00:00.000Z', 'ST. PETERSBURG', 'Katya'),
     ('Second', 'My second album!', '2018-06-22T00:00:00.000Z', 'ST. PETERSBURG', 'Katya');
 
 -- Down
