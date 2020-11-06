@@ -14,10 +14,7 @@
   "dependencies": {
     "compression": "^1.7.1",
     "polka": "next",
-    "sirv": "^1.0.7",
-    "sql-template-strings": "^2.2.2",
-    "sqlite": "^4.0.15",
-    "sqlite3": "^5.0.0"
+    "sirv": "^1.0.7"
   },
   "devDependencies": {
     "@babel/core": "^7.12.3",

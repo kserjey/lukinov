@@ -1,10 +1,8 @@
-import sql from 'sql-template-strings';
-import { database } from '../../database';
+import { albums } from './_albums';
 
 export async function get(req, res, next) {
   const { albumId } = req.params;
-  const db = await database;
-  const album = await db.get(sql`SELECT * FROM album WHERE id = ${albumId}`);
+  const album = albums.find((album) => album.id === parseInt(albumId));
 
   if (album) {
     res.writeHead(200, {
