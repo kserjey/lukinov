@@ -2,7 +2,7 @@ import PrismicDOM from 'prismic-dom';
 
 const DayAndShortMonth = new Intl.DateTimeFormat('en-US', {
   day: 'numeric',
-  month: 'short',
+  month: 'long',
 });
 
 function formatDate(dateString) {
