@@ -1,3 +1,20 @@
+<script context="module">
+  import Prismic from 'prismic-javascript';
+  import { client } from '../utils/client';
+
+  export async function preload({ params, query }) {
+    return client.getSingle('homepage').then(({ data }) => ({
+      leftPhoto: data.left_photo,
+      rightPhoto: data.right_photo,
+    }));
+  }
+</script>
+
+<script>
+  export let leftPhoto;
+  export let rightPhoto;
+</script>
+
 <style>
   h1 {
     position: fixed;
@@ -35,8 +52,8 @@
 </svelte:head>
 
 <div class="background">
-  <img alt="masha" src="/masha.jpeg" />
-  <img alt="katya" src="/katya.jpeg" />
+  <img src={leftPhoto.url} />
+  <img src={rightPhoto.url} />
 </div>
 
 <nav>
