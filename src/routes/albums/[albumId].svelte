@@ -1,17 +1,14 @@
 <script context="module">
-  export async function preload({ params }) {
-    const res = await this.fetch(`albums/${params.albumId}.json`);
-    const data = await res.json();
+  import Prismic from 'prismic-javascript';
+  import { client } from '../../utils/client';
 
-    if (res.status === 200) {
-      return { album: data };
-    } else {
-      this.error(res.status, data.message);
-    }
+  export async function preload({ params }) {
+    return client.getByID(params.albumId).then((album) => ({ album }));
   }
 </script>
 
 <script>
+  import PrismicDOM from 'prismic-dom';
   import { formatDate } from './_formatDate';
   export let album;
 </script>
@@ -80,16 +77,18 @@
 
 <div class="container">
   <div class="info-block">
-    <h1>{album.name}</h1>
-    <p class="description">{album.description}</p>
-    <time datetime={album.date}>{formatDate(album.date)}</time>
-    <p class="model-name">{album.model}</p>
+    <h1>{PrismicDOM.RichText.asText(album.data.name)}</h1>
+    <p class="description">
+      {PrismicDOM.RichText.asText(album.data.description)}
+    </p>
+    <time datetime={album.data.date}>{formatDate(album.data.date)}</time>
+    <!-- <p class="model-name">{album.model}</p> -->
   </div>
-  {#each Array.from({ length: 5 }) as photo}<img src="/katya.jpeg" />{/each}
+  {#each album.data.photos as { photo }}<img src={photo.url} />{/each}
   <div class="outro">
-    <h2>{album.name}</h2>
-    <time datetime={album.date}>{formatDate(album.date)}</time>
-    <p class="model-name">{album.model}</p>
-    <p class="location">{album.location}</p>
+    <h2>{PrismicDOM.RichText.asText(album.data.name)}</h2>
+    <time datetime={album.data.date}>{formatDate(album.data.date)}</time>
+    <!-- <p class="model-name">{album.model}</p> -->
+    <!-- <p class="location">{album.location}</p> -->
   </div>
 </div>

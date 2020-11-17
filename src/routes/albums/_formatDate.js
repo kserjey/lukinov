@@ -1,21 +1,13 @@
-const MONTHS = [
-  'January',
-  'February',
-  'March',
-  'April',
-  'May',
-  'June',
-  'July',
-  'August',
-  'September',
-  'October',
-  'November',
-  'December',
-];
+import PrismicDOM from 'prismic-dom';
+
+const DayAndShortMonth = new Intl.DateTimeFormat('en-US', {
+  day: 'numeric',
+  month: 'short',
+});
 
 function formatDate(dateString) {
-  const date = new Date(dateString);
-  return `${date.getDate()} ${MONTHS[date.getMonth()]}`;
+  const date = PrismicDOM.Date(dateString);
+  return DayAndShortMonth.format(date);
 }
 
 export { formatDate };

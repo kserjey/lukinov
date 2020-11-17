@@ -1,19 +1,21 @@
 <script context="module">
-  export function preload({ params, query }) {
-    return this.fetch(`albums.json`)
-      .then((r) => r.json())
-      .then((albums) => {
-        return { albums };
-      });
+  import Prismic from 'prismic-javascript';
+  import { client } from '../../utils/client';
+
+  export async function preload({ params, query }) {
+    return client
+      .query(Prismic.Predicates.at('document.type', 'album'))
+      .then(({ results }) => ({ albums: results }));
   }
 </script>
 
 <script>
+  import PrismicDOM from 'prismic-dom';
   import { formatDate } from './_formatDate';
-  export let albums;
+  export let albums = [];
 
   $: albumsByYear = albums.reduce((acc, album) => {
-    const year = new Date(album.date).getFullYear();
+    const year = PrismicDOM.Date(album.data.date).getFullYear();
     if (!acc[year]) return { ...acc, [year]: [album] };
     return { ...acc, [year]: [...acc[year], album] };
   }, {});
@@ -67,10 +69,10 @@
       {#each albumsByYear[year] as album (album.id)}
         <article class="album">
           <a href="/albums/{album.id}">
-            <img alt="album cover" src="/katya.jpeg" />
+            <img alt="album cover" src={album.data.photos[0].photo.url} />
           </a>
-          <time datetime={album.date}>{formatDate(album.date)}</time>
-          <h3>{album.name}</h3>
+          <time datetime={album.data.date}>{formatDate(album.data.date)}</time>
+          <h3>{PrismicDOM.RichText.asText(album.data.name)}</h3>
         </article>
       {/each}
     </div>
