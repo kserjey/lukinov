@@ -1,13 +1,18 @@
 import PrismicDOM from 'prismic-dom';
 
-const DayAndShortMonth = new Intl.DateTimeFormat('en-US', {
-  day: 'numeric',
+const DayLongMonthYear = new Intl.DateTimeFormat('en-US', {
+  day: '2-digit',
   month: 'long',
+  year: 'numeric',
 });
 
-function formatDate(dateString) {
+const toByType = (acc, item) => ({ ...acc, [item.type]: item.value });
+
+function formatDate(dateString, withYear = false) {
   const date = PrismicDOM.Date(dateString);
-  return DayAndShortMonth.format(date);
+  const byType = DayLongMonthYear.formatToParts(date).reduce(toByType, {});
+  const monthAndDay = `${byType.month} ${byType.day}`;
+  return withYear ? `${byType.year} ${monthAndDay}` : monthAndDay;
 }
 
 export { formatDate };
