@@ -27,7 +27,15 @@
   .year-albums {
     display: flex;
     align-items: flex-start;
-    margin: 32px 0;
+    padding: 16px 0;
+  }
+
+  .year-albums:first-child {
+    padding-top: 32px;
+  }
+
+  .year-albums:last-child {
+    padding-bottom: 32px;
   }
 
   .year-albums h2 {
@@ -58,7 +66,6 @@
   .album h3 {
     color: #b2b1b1;
     font-size: 18px;
-    font-family: 'Mukta Mahee', sans-serif;
   }
 </style>
 
