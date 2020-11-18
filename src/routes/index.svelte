@@ -33,7 +33,11 @@
     overflow: hidden;
   }
 
-  .background img {
+  .background div {
+    flex: 1;
+  }
+
+  .background div img {
     max-width: 100%;
   }
 
@@ -51,8 +55,8 @@
 </svelte:head>
 
 <div class="background">
-  <img src={leftPhoto.url} />
-  <img src={rightPhoto.url} />
+  <div><img src={leftPhoto.url} /></div>
+  <div><img src={rightPhoto.url} /></div>
 </div>
 
 <nav>
