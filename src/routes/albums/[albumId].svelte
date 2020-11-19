@@ -25,9 +25,9 @@
 
 <style>
   .container {
-    height: 100%;
-    box-sizing: border-box;
     display: flex;
+    box-sizing: border-box;
+    height: 100%;
     padding: 0 32px 32px 32px;
     overflow-y: scroll;
   }
