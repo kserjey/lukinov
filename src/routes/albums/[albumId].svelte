@@ -28,7 +28,7 @@
     height: 100%;
     box-sizing: border-box;
     display: flex;
-    padding: 32px;
+    padding: 0 32px 32px 32px;
     overflow-y: scroll;
   }
 
@@ -46,7 +46,9 @@
   }
 
   .info-block h1 {
+    margin-bottom: 16px;
     font-size: 96px;
+    line-height: 1.1em;
   }
 
   .info-block time {
@@ -75,8 +77,8 @@
     display: block;
     margin-bottom: 16px;
     color: #000000;
+    font-family: 'Yeseva One', cursive;
     font-size: 72px;
-    text-decoration: none;
   }
 
   .outro a:hover {
@@ -84,8 +86,14 @@
   }
 
   .outro h3 {
+    margin-bottom: 8px;
     color: #000000;
     font-size: 24px;
+    text-transform: uppercase;
+  }
+
+  .outro .model-name {
+    text-transform: uppercase;
   }
 </style>
 
