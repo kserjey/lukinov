@@ -28,27 +28,27 @@
   }
 
   .info-block {
+    flex-shrink: 0;
     display: flex;
     flex-direction: column;
+    max-width: 640px;
     margin-right: 56px;
   }
 
   .info-block h1 {
     font-size: 96px;
-    white-space: nowrap;
   }
 
   .info-block time {
     margin-top: auto;
   }
 
-  .description {
+  .info-block .description {
     color: #b2b1b1;
     font-size: 32px;
-    font-family: 'Abril Fatface', cursive;
   }
 
-  .model-name {
+  .info-block .model-name {
     color: #b2b1b1;
     text-transform: uppercase;
   }
@@ -78,16 +78,17 @@
 <div class="container">
   <div class="info-block">
     <h1>{PrismicDOM.RichText.asText(album.data.name)}</h1>
-    <p class="description">
-      {PrismicDOM.RichText.asText(album.data.description)}
-    </p>
-    <time datetime={album.data.date}>{formatDate(album.data.date)}</time>
-    <!-- <p class="model-name">{album.model}</p> -->
+    <div class="description">
+      {@html PrismicDOM.RichText.asHtml(album.data.description)}
+    </div>
+    <time datetime={album.data.date}>{formatDate(album.data.date, true)}</time>
+    <p class="model-name">{PrismicDOM.RichText.asText(album.data.model)}</p>
   </div>
   {#each album.data.photos as { photo }}<img src={photo.url} />{/each}
   <div class="outro">
-    <h2>{PrismicDOM.RichText.asText(album.data.name)}</h2>
-    <time datetime={album.data.date}>{formatDate(album.data.date)}</time>
+    <a>Next</a>
+    <!-- <h2>{PrismicDOM.RichText.asText(album.data.name)}</h2> -->
+    <!-- <time datetime={album.data.date}>{formatDate(album.data.date)}</time> -->
     <!-- <p class="model-name">{album.model}</p> -->
     <!-- <p class="location">{album.location}</p> -->
   </div>
