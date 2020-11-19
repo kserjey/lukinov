@@ -11,9 +11,8 @@ const toByType = (acc, item) => ({ ...acc, [item.type]: item.value });
 function formatDate(dateString, withYear = false) {
   const date = PrismicDOM.Date(dateString);
   const byType = DayLongMonthYear.formatToParts(date).reduce(toByType, {});
-  return withYear
-    ? `${byType.year} ${byType.month} ${byType.day}`
-    : `${byType.day} ${byType.month}`;
+  const dayAndMonth = `${byType.day} ${byType.month}`;
+  return withYear ? `${dayAndMonth} ${byType.year}` : dayAndMonth;
 }
 
 export { formatDate };
