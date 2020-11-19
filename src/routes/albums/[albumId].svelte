@@ -9,13 +9,10 @@
         orderings: '[my.album.date desc]',
         after: params.albumId,
       }),
-    ]).then(
-      ([album, afterAlbum]) =>
-        console.log(afterAlbum) || {
-          album,
-          nextAlbum: afterAlbum.results[0],
-        }
-    );
+    ]).then(([album, afterAlbum]) => ({
+      album,
+      nextAlbum: afterAlbum.results[0],
+    }));
   }
 </script>
 
