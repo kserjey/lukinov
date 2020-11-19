@@ -24,7 +24,7 @@
     {#if $page.path === '/albums'}
       <a href="/">Main</a>
     {:else}<a href="/albums">Albums</a>{/if}
-    <a href="/contacts">Contacts</a>
+    <a href="/contact">Contact</a>
   </nav>
 {/if}
 
