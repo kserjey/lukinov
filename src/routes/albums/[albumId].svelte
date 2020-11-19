@@ -3,7 +3,19 @@
   import { client } from '../../utils/client';
 
   export async function preload({ params }) {
-    return client.getByID(params.albumId).then((album) => ({ album }));
+    return Promise.all([
+      client.getByID(params.albumId),
+      client.query(Prismic.Predicates.at('document.type', 'album'), {
+        orderings: '[my.album.date desc]',
+        after: params.albumId,
+      }),
+    ]).then(
+      ([album, afterAlbum]) =>
+        console.log(afterAlbum) || {
+          album,
+          nextAlbum: afterAlbum.results[0],
+        }
+    );
   }
 </script>
 
@@ -11,6 +23,7 @@
   import PrismicDOM from 'prismic-dom';
   import { formatDate } from './_formatDate';
   export let album;
+  export let nextAlbum;
 </script>
 
 <style>
@@ -54,24 +67,28 @@
   }
 
   .outro {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 72px 164px;
+    align-self: center;
+    flex-shrink: 0;
+    width: 512px;
+    text-align: center;
+    color: #b2b1b1;
   }
 
-  .outro h2 {
+  .outro a {
+    display: block;
+    margin-bottom: 16px;
+    color: #000000;
+    font-size: 72px;
+    text-decoration: none;
+  }
+
+  .outro a:hover {
+    text-decoration: underline;
+  }
+
+  .outro h3 {
+    color: #000000;
     font-size: 24px;
-  }
-
-  .outro time {
-    color: #b2b1b1;
-  }
-
-  .location {
-    color: #b2b1b1;
-    text-transform: uppercase;
-    white-space: nowrap;
   }
 </style>
 
@@ -85,11 +102,16 @@
     <p class="model-name">{PrismicDOM.RichText.asText(album.data.model)}</p>
   </div>
   {#each album.data.photos as { photo }}<img src={photo.url} />{/each}
-  <div class="outro">
-    <a>Next</a>
-    <!-- <h2>{PrismicDOM.RichText.asText(album.data.name)}</h2> -->
-    <!-- <time datetime={album.data.date}>{formatDate(album.data.date)}</time> -->
-    <!-- <p class="model-name">{album.model}</p> -->
-    <!-- <p class="location">{album.location}</p> -->
-  </div>
+  {#if nextAlbum}
+    <div class="outro">
+      <a href="/albums/{nextAlbum.id}">Next</a>
+      <h3>{PrismicDOM.RichText.asText(nextAlbum.data.name)}</h3>
+      <time
+        datetime={nextAlbum.data.date}
+      >{formatDate(nextAlbum.data.date)}</time>
+      <p class="model-name">
+        {PrismicDOM.RichText.asText(nextAlbum.data.model)}
+      </p>
+    </div>
+  {/if}
 </div>
