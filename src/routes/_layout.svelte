@@ -19,11 +19,13 @@
   }
 </style>
 
-<nav>
-  {#if $page.params.albumId}
-    <a href="/albums">Albums</a>
-  {:else}<a href="/">Main</a>{/if}
-  <a href="/contacts">Contacts</a>
-</nav>
+{#if $page.path !== '/'}
+  <nav>
+    {#if $page.path === '/albums'}
+      <a href="/">Main</a>
+    {:else}<a href="/albums">Albums</a>{/if}
+    <a href="/contacts">Contacts</a>
+  </nav>
+{/if}
 
 <slot />
