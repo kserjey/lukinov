@@ -1,11 +1,8 @@
 <script context="module">
   import Prismic from 'prismic-javascript';
-  import { client } from '../../utils/client';
 
   export async function preload({ params, query }) {
-    return client
-      .query(Prismic.Predicates.at('document.type', 'album'))
-      .then(({ results }) => ({ albums: results }));
+    return this.fetch('albums.json').then((res) => res.json());
   }
 </script>
 

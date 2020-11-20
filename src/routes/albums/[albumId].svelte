@@ -1,18 +1,8 @@
 <script context="module">
-  import Prismic from 'prismic-javascript';
-  import { client } from '../../utils/client';
-
   export async function preload({ params }) {
-    return Promise.all([
-      client.getByID(params.albumId),
-      client.query(Prismic.Predicates.at('document.type', 'album'), {
-        orderings: '[my.album.date desc]',
-        after: params.albumId,
-      }),
-    ]).then(([album, afterAlbum]) => ({
-      album,
-      nextAlbum: afterAlbum.results[0],
-    }));
+    return this.fetch(`albums/${params.albumId}.json`).then((res) =>
+      res.json()
+    );
   }
 </script>
 

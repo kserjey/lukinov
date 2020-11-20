@@ -1,14 +1,6 @@
 <script context="module">
-  import Prismic from 'prismic-javascript';
-  import { client } from '../utils/client';
-
   export async function preload({ params, query }) {
-    return client.getSingle('about_me').then(({ data }) => ({
-      ...data,
-      vkLink: data.vk_link,
-      instagramLink: data.instagram_link,
-      phoneNumber: data.phone_number,
-    }));
+    return this.fetch('contact.json').then((res) => res.json());
   }
 </script>
 

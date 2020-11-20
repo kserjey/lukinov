@@ -1,12 +1,6 @@
 <script context="module">
-  import Prismic from 'prismic-javascript';
-  import { client } from '../utils/client';
-
-  export async function preload({ params, query }) {
-    return client.getSingle('homepage').then(({ data }) => ({
-      leftPhoto: data.left_photo,
-      rightPhoto: data.right_photo,
-    }));
+  export async function preload() {
+    return this.fetch('index.json').then((res) => res.json());
   }
 </script>
 
