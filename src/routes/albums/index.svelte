@@ -24,33 +24,24 @@
 </script>
 
 <style>
-  .year-albums {
+  .year-album {
     display: flex;
+    justify-content: space-between;
     align-items: flex-start;
-    padding: 16px 0;
+    padding: 0 64px 32px 64px;
   }
 
-  .year-albums:first-child {
-    padding-top: 32px;
-  }
-
-  .year-albums:last-child {
-    padding-bottom: 32px;
-  }
-
-  .year-albums h2 {
-    width: 372px;
-    padding-left: 72px;
+  .year-album h2 {
+    margin-right: 32px;
     font-size: 72px;
   }
 
   .albums {
-    flex: 1;
+    width: 100%;
     display: grid;
-    /* TODO: Responsibility */
-    grid-gap: 32px 128px;
-    grid-template-columns: repeat(auto-fill, 242px);
-    margin-right: 72px;
+    grid-gap: 16px 32px;
+    grid-template-columns: repeat(auto-fill, 256px);
+    justify-content: space-evenly;
   }
 
   .album img {
@@ -67,10 +58,26 @@
     color: #b2b1b1;
     font-size: 18px;
   }
+
+  @media only screen and (max-device-width: 872px) {
+    .year-album {
+      flex-direction: column;
+      align-items: center;
+      padding: 0 32px 16px 32px;
+    }
+
+    .year-album h2 {
+      margin: 0 0 16px 0;
+    }
+
+    .albums {
+      margin: 0;
+    }
+  }
 </style>
 
 {#each years as year (year)}
-  <section class="year-albums">
+  <section class="year-album">
     <h2>{year}</h2>
     <div class="albums">
       {#each albumsByYear[year] as album (album.id)}

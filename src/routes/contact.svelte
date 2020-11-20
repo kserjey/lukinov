@@ -33,40 +33,64 @@
 
 <style>
   .container {
-    display: flex;
-    justify-content: space-around;
-    box-sizing: border-box;
     height: 100%;
-    min-height: 0;
+    display: flex;
+    justify-content: space-between;
+    box-sizing: border-box;
     padding: 0 32px 32px 32px;
   }
 
-  .container > img {
-    max-height: 100%;
+  .photo-wrapper {
+    width: 100%;
+  }
+
+  .photo-wrapper img {
+    max-width: 100%;
   }
 
   .info-block {
-    flex-grow: 1;
-    flex-shrink: 0;
+    width: 100%;
     display: flex;
     flex-direction: column;
     margin-right: 32px;
   }
 
-  .info-block .description {
+  .info-block h1 {
+    margin-bottom: 8px;
+  }
+
+  .description {
+    margin-bottom: 24px;
     color: #b2b1b1;
   }
 
-  .info-block .links {
+  .links {
     align-self: center;
     margin: auto 0 0 0;
     padding: 0;
     list-style-type: none;
   }
 
-  .info-block .links li {
+  .links li {
     display: inline;
     padding: 0 8px;
+  }
+
+  .links img {
+    width: 40px;
+    height: 40px;
+  }
+
+  @media only screen and (max-aspect-ratio: 3/4) {
+    .container {
+      flex-direction: column;
+      padding: 0 32px 16px 32px;
+    }
+
+    .info-block {
+      margin: 0 0 24px 0;
+      text-align: center;
+    }
   }
 </style>
 
@@ -84,5 +108,5 @@
       {/each}
     </ul>
   </div>
-  <img src={photo.url} />
+  <div class="photo-wrapper"><img src={photo.url} /></div>
 </div>

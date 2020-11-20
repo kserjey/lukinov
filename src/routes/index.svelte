@@ -22,6 +22,7 @@
     left: 50%;
     color: white;
     font-size: 48px;
+    text-align: center;
     transform: translate(-50%);
   }
 
@@ -35,10 +36,16 @@
 
   .background div {
     flex: 1;
+    height: 100%;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
   }
 
-  .background div img {
-    max-width: 100%;
+  @media only screen and (max-aspect-ratio: 3/4) {
+    .background div:last-child {
+      display: none;
+    }
   }
 
   .bottom-button {
@@ -55,13 +62,11 @@
 </svelte:head>
 
 <div class="background">
-  <div><img src={leftPhoto.url} /></div>
-  <div><img src={rightPhoto.url} /></div>
+  <div style="background-image: url('{leftPhoto.url}')" />
+  <div style="background-image: url('{rightPhoto.url}')" />
 </div>
 
-<nav>
-  <h1>Vladislav Lukinov</h1>
-</nav>
+<h1>Vladislav Lukinov</h1>
 
 <a class="bottom-button" href="/albums">
   <img alt="arrow bottom" src="/arrow-bottom.svg" />
