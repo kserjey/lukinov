@@ -7,7 +7,6 @@
 <script>
   import PrismicDOM from 'prismic-dom';
   import Links from '../comonents/links.svelte';
-  import AlbumId from './albums/[albumId].svelte';
 
   export let name;
   export let description;
