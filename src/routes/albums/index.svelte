@@ -7,9 +7,28 @@
 </script>
 
 <script>
+  import { onMount } from 'svelte';
   import PrismicDOM from 'prismic-dom';
   import { formatDate } from './_formatDate';
+
   export let albums = [];
+  export let hasMore;
+
+  let SvelteInfiniteScroll;
+  let page = 1;
+
+  onMount(async () => {
+    const module = await import('svelte-infinite-scroll');
+    SvelteInfiniteScroll = module.default;
+  });
+
+  async function loadMore() {
+    page += 1;
+    const response = await fetch(`albums.json?page=${page}`);
+    const data = await response.json();
+    albums = [...albums, ...data.albums];
+    hasMore = data.hasMore;
+  }
 
   $: albumsByYear = albums.reduce((acc, album) => {
     const year = PrismicDOM.Date(album.data.date).getFullYear();
@@ -88,4 +107,10 @@
       {/each}
     </div>
   </section>
+  <svelte:component
+    this={SvelteInfiniteScroll}
+    window
+    {hasMore}
+    on:loadMore={loadMore}
+  />
 {/each}

@@ -17,7 +17,8 @@
     "polka": "next",
     "prismic-dom": "^2.2.4",
     "prismic-javascript": "^3.0.2",
-    "sirv": "^1.0.7"
+    "sirv": "^1.0.7",
+    "svelte-infinite-scroll": "^1.5.1"
   },
   "devDependencies": {
     "@babel/core": "^7.12.3",
