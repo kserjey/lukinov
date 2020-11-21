@@ -75,10 +75,6 @@
     font-size: 72px;
   }
 
-  .outro a:hover {
-    text-decoration: underline;
-  }
-
   .outro h3 {
     margin-bottom: 8px;
     color: #000000;
