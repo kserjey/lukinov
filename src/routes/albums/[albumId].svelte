@@ -31,7 +31,7 @@
     flex-shrink: 0;
     display: flex;
     flex-direction: column;
-    max-width: 640px;
+    max-width: 80%;
     margin-right: 56px;
   }
 
@@ -39,6 +39,8 @@
     margin-bottom: 16px;
     font-size: 96px;
     line-height: 1.1em;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
   }
 
   .info-block time {
@@ -46,6 +48,7 @@
   }
 
   .info-block .description {
+    margin-bottom: 8px;
     color: #b2b1b1;
     font-size: 32px;
   }
@@ -58,6 +61,7 @@
   .outro {
     align-self: center;
     flex-shrink: 0;
+    max-width: 100%;
     width: 512px;
     text-align: center;
     color: #b2b1b1;
@@ -84,6 +88,33 @@
 
   .outro .model-name {
     text-transform: uppercase;
+  }
+
+  @media only screen and (max-device-width: 480px) {
+    .container {
+      flex-direction: column;
+    }
+
+    .container img {
+      margin: 16px 0;
+    }
+
+    .info-block {
+      max-width: none;
+      margin: 0;
+    }
+
+    .info-block h1 {
+      font-size: 48px;
+    }
+
+    .info-block .description {
+      font-size: 18px;
+    }
+
+    .outro {
+      padding-bottom: 32px;
+    }
   }
 </style>
 
