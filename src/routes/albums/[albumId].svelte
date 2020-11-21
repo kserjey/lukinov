@@ -8,6 +8,7 @@
 </script>
 
 <script>
+  import { afterUpdate } from 'svelte';
   import PrismicDOM from 'prismic-dom';
   import { formatDate } from './_formatDate';
   import Links from '../../comonents/Links.svelte';
@@ -15,6 +16,15 @@
   export let album;
   export let nextAlbum;
   export let links;
+
+  let prevAlbum;
+  let containerEl;
+
+  afterUpdate(() => {
+    if (prevAlbum?.id !== album) {
+      containerEl.scrollLeft = 0;
+    }
+  });
 </script>
 
 <style>
@@ -119,7 +129,7 @@
   }
 </style>
 
-<div class="container">
+<div class="container" bind:this={containerEl}>
   <div class="info-block">
     <h1>{PrismicDOM.RichText.asText(album.data.name)}</h1>
     <div class="description">
