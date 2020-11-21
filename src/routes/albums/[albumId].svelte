@@ -1,16 +1,20 @@
 <script context="module">
   export async function preload({ params }) {
-    return this.fetch(`albums/${params.albumId}.json`).then((res) =>
-      res.json()
-    );
+    return Promise.all([
+      this.fetch(`albums/${params.albumId}.json`).then((res) => res.json()),
+      this.fetch('contact.json').then((res) => res.json()),
+    ]).then(([data, { links }]) => ({ ...data, links }));
   }
 </script>
 
 <script>
   import PrismicDOM from 'prismic-dom';
   import { formatDate } from './_formatDate';
+  import Links from '../../comonents/Links.svelte';
+
   export let album;
   export let nextAlbum;
+  export let links;
 </script>
 
 <style>
@@ -83,6 +87,7 @@
   }
 
   .outro .model-name {
+    margin-bottom: 32px;
     text-transform: uppercase;
   }
 
@@ -134,6 +139,7 @@
       <p class="model-name">
         {PrismicDOM.RichText.asText(nextAlbum.data.model)}
       </p>
+      <Links {...links} />
     </div>
   {/if}
 </div>

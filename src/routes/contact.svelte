@@ -6,21 +6,13 @@
 
 <script>
   import PrismicDOM from 'prismic-dom';
+  import Links from '../comonents/links.svelte';
+  import AlbumId from './albums/[albumId].svelte';
 
   export let name;
   export let description;
   export let photo;
-  export let vkLink;
-  export let instagramLink;
-  export let phoneNumber;
-  export let email;
-
-  $: links = [
-    { name: 'vk', link: PrismicDOM.Link.url(vkLink) },
-    { name: 'instagram', link: PrismicDOM.Link.url(instagramLink) },
-    { name: 'email', link: email && `mailto:${email}` },
-    { name: 'phone', link: phoneNumber && `tel:${phoneNumber}` },
-  ].filter((item) => !!item.link);
+  export let links;
 </script>
 
 <style>
@@ -68,21 +60,9 @@
     color: #b2b1b1;
   }
 
-  .links {
-    align-self: center;
-    margin: 0;
-    padding: 0;
-    list-style-type: none;
-  }
-
-  .links li {
-    display: inline-flex;
-    padding: 0 4px;
-  }
-
-  .links img {
-    width: 40px;
-    height: 40px;
+  .location p {
+    font-size: 24px;
+    text-align: center;
   }
 
   @media only screen and (max-aspect-ratio: 3/4) {
@@ -104,25 +84,11 @@
       <h1>{PrismicDOM.RichText.asText(name)}</h1>
       {@html PrismicDOM.RichText.asHtml(description)}
     </div>
-    <div>
-      <p style="font-size: 24px; text-align: center;">
-        Saint-Petersburg, Russia
-      </p>
-      <p style="font-size: 24px; text-align: center;">{email}</p>
+    <div class="location">
+      <p>Saint-Petersburg, Russia</p>
+      <p>{links.email}</p>
     </div>
-    <div style="text-align: center">
-      <h4 style="margin-bottom: 8px">Follow Vladislav</h4>
-      <ul class="links">
-        {#each links as item}
-          <li>
-            <a href={item.link}><img
-                alt={item.name}
-                src="/{item.name}.svg"
-              /></a>
-          </li>
-        {/each}
-      </ul>
-    </div>
+    <Links {...links} />
   </div>
   <div class="photo-wrapper"><img src={photo.url} /></div>
 </div>
