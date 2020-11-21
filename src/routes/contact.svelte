@@ -6,7 +6,7 @@
 
 <script>
   import PrismicDOM from 'prismic-dom';
-  import Links from '../comonents/links.svelte';
+  import Links from '../comonents/Links.svelte';
 
   export let name;
   export let description;
