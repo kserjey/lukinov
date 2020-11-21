@@ -6,7 +6,7 @@ export async function get(req, res, next) {
     Prismic.Predicates.at('document.type', 'album'),
     {
       orderings: '[my.album.date desc]',
-      pageSize: 5,
+      pageSize: 100,
       page: req.query.page,
     }
   );
