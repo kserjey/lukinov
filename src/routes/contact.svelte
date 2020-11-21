@@ -26,6 +26,7 @@
 <style>
   .container {
     height: 100%;
+    min-height: 0;
     display: flex;
     justify-content: space-between;
     box-sizing: border-box;
@@ -37,35 +38,46 @@
   }
 
   .photo-wrapper img {
-    max-width: 100%;
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
   }
 
   .info-block {
     width: 100%;
     display: flex;
     flex-direction: column;
+    justify-content: space-around;
+    /* todo: padding and box-sizing */
     margin-right: 32px;
-  }
-
-  .info-block h1 {
-    margin-bottom: 8px;
   }
 
   .description {
     margin-bottom: 24px;
+    font-size: 24px;
+    text-align: center;
+  }
+
+  .description h1 {
+    margin-bottom: 8px;
+    font-size: 48px;
+    text-align: center;
+  }
+
+  .description :global(p) {
     color: #b2b1b1;
   }
 
   .links {
     align-self: center;
-    margin: auto 0 0 0;
+    margin: 0;
     padding: 0;
     list-style-type: none;
   }
 
   .links li {
-    display: inline;
-    padding: 0 8px;
+    display: inline-flex;
+    padding: 0 4px;
   }
 
   .links img {
@@ -75,7 +87,7 @@
 
   @media only screen and (max-aspect-ratio: 3/4) {
     .container {
-      flex-direction: column;
+      flex-direction: column-reverse;
       padding: 0 32px 16px 32px;
     }
 
@@ -88,17 +100,29 @@
 
 <div class="container">
   <div class="info-block">
-    <h1>{PrismicDOM.RichText.asText(name)}</h1>
     <div class="description">
+      <h1>{PrismicDOM.RichText.asText(name)}</h1>
       {@html PrismicDOM.RichText.asHtml(description)}
     </div>
-    <ul class="links">
-      {#each links as item}
-        <li>
-          <a href={item.link}><img alt={item.name} src="/{item.name}.svg" /></a>
-        </li>
-      {/each}
-    </ul>
+    <div>
+      <p style="font-size: 24px; text-align: center;">
+        Saint-Petersburg, Russia
+      </p>
+      <p style="font-size: 24px; text-align: center;">{email}</p>
+    </div>
+    <div style="text-align: center">
+      <h4 style="margin-bottom: 8px">Follow Vladislav</h4>
+      <ul class="links">
+        {#each links as item}
+          <li>
+            <a href={item.link}><img
+                alt={item.name}
+                src="/{item.name}.svg"
+              /></a>
+          </li>
+        {/each}
+      </ul>
+    </div>
   </div>
   <div class="photo-wrapper"><img src={photo.url} /></div>
 </div>

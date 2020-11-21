@@ -24,7 +24,8 @@ a {
 }
 
 h1,
-h2 {
+h2,
+h4 {
   margin: 0;
   font-family: 'Yeseva One', cursive;
 }
