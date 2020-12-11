@@ -101,7 +101,7 @@
     text-transform: uppercase;
   }
 
-  @media only screen and (max-device-width: 480px) {
+  @media only screen and (max-width: 480px) {
     .container {
       flex-direction: column;
     }

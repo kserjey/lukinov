@@ -76,7 +76,7 @@
     font-size: 18px;
   }
 
-  @media only screen and (max-device-width: 872px) {
+  @media only screen and (max-width: 872px) {
     .year-album {
       flex-direction: column;
       align-items: center;
