@@ -41,6 +41,7 @@
 
 <style>
   .year-album {
+    flex-shrink: 0;
     display: flex;
     justify-content: space-between;
     align-items: flex-start;
