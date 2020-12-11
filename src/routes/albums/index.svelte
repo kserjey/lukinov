@@ -1,6 +1,4 @@
 <script context="module">
-  import Prismic from 'prismic-javascript';
-
   export async function preload({ params, query }) {
     return this.fetch('albums.json').then((res) => res.json());
   }
