@@ -16,7 +16,6 @@
 
 <style>
   .container {
-    height: 100%;
     min-height: 0;
     display: flex;
     justify-content: space-between;
@@ -66,12 +65,13 @@
 
   @media only screen and (max-aspect-ratio: 3/4) {
     .container {
+      min-height: auto;
       flex-direction: column-reverse;
       padding: 0 32px 16px 32px;
     }
 
     .info-block {
-      margin: 0 0 24px 0;
+      margin: 0;
       text-align: center;
     }
   }
