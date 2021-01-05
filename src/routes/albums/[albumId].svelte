@@ -37,7 +37,7 @@
   }
 
   .container img {
-    max-height: 100%;
+    max-width: 100%;
     margin: 0 32px;
   }
 
