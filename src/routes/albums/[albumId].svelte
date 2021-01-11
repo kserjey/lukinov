@@ -38,7 +38,9 @@
 
   .container img {
     max-width: 100%;
+    max-height: 100%;
     margin: 0 32px;
+    object-fit: contain;
   }
 
   .info-block {
