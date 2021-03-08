@@ -12,12 +12,14 @@
 <style>
   h1 {
     position: fixed;
-    top: 0;
+    top: 50%;
     left: 50%;
     color: white;
+    font-family: 'Bebas Neue', cursive;
+    text-transform: uppercase;
     font-size: 48px;
     text-align: center;
-    transform: translate(-50%);
+    transform: translate(-50%, -50%);
   }
 
   .background {
