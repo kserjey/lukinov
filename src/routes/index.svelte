@@ -5,8 +5,10 @@
 </script>
 
 <script>
-  export let leftPhoto;
-  export let rightPhoto;
+  import MediaQuery from '../comonents/MediaQuery.svelte';
+
+  export let landscapePhoto;
+  export let portraitPhoto;
 </script>
 
 <style>
@@ -23,25 +25,11 @@
   }
 
   .background {
-    display: flex;
-    align-items: center;
     width: 100%;
-    height: 100%;
-    overflow: hidden;
-  }
-
-  .background div {
-    flex: 1;
     height: 100%;
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
-  }
-
-  @media only screen and (max-aspect-ratio: 3/4) {
-    .background div:last-child {
-      display: none;
-    }
   }
 
   .bottom-button {
@@ -57,10 +45,12 @@
   <title>Home</title>
 </svelte:head>
 
-<div class="background">
-  <div style="background-image: url('{leftPhoto.url}')" />
-  <div style="background-image: url('{rightPhoto.url}')" />
-</div>
+<MediaQuery query="(max-aspect-ratio: 3/4)" let:matches>
+  <div
+    class="background"
+    style="background-image: url('{(matches ? portraitPhoto : landscapePhoto).url}')"
+  />
+</MediaQuery>
 
 <h1>Vladislav Lukinov</h1>
 
