@@ -13,18 +13,17 @@
 
 <style>
   h1 {
-    position: fixed;
-    top: 50%;
-    left: 50%;
     color: white;
-    font-family: 'Bebas Neue', cursive;
-    text-transform: uppercase;
+    font-family: 'Teko', cursive;
     font-size: 48px;
-    text-align: center;
-    transform: translate(-50%, -50%);
+    font-weight: 300;
+    text-transform: uppercase;
   }
 
   .background {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     width: 100%;
     height: 100%;
     background-size: cover;
@@ -49,10 +48,10 @@
   <div
     class="background"
     style="background-image: url('{(matches ? portraitPhoto : landscapePhoto).url}')"
-  />
+  >
+    <h1>Vladislav Lukinov</h1>
+  </div>
 </MediaQuery>
-
-<h1>Vladislav Lukinov</h1>
 
 <a class="bottom-button" href="/albums">
   <img alt="arrow bottom" src="/arrow-bottom.svg" />
