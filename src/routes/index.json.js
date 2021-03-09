@@ -7,8 +7,6 @@ export async function get(req, res, next) {
 
   res.end(
     JSON.stringify({
-      leftPhoto: data.left_photo,
-      rightPhoto: data.right_photo,
       landscapePhoto: data.landscape_photo,
       portraitPhoto: data.portrait_photo,
     })
