@@ -47,7 +47,7 @@
   }
 
   .year-album h2 {
-    margin-right: 32px;
+    width: 240px;
     font-size: 72px;
   }
 
@@ -82,7 +82,8 @@
     }
 
     .year-album h2 {
-      margin: 0 0 16px 0;
+      width: auto;
+      margin-bottom: 16px;
     }
 
     .albums {
