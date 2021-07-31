@@ -1,5 +1,5 @@
 <script context="module">
-  export async function preload({ params, query }) {
+  export async function preload() {
     return this.fetch('albums.json').then((res) => res.json());
   }
 </script>
@@ -8,6 +8,7 @@
   import { onMount } from 'svelte';
   import PrismicDOM from 'prismic-dom';
   import { formatDate } from './_formatDate';
+  import Image from '../../comonents/Image.svelte';
 
   export let albums = [];
   export let hasMore;
@@ -59,10 +60,6 @@
     justify-content: space-evenly;
   }
 
-  .album img {
-    max-width: 100%;
-  }
-
   .album time {
     margin-top: 32px;
     margin-bottom: 8px;
@@ -99,7 +96,10 @@
       {#each albumsByYear[year] as album (album.id)}
         <article class="album">
           <a href="/albums/{album.id}">
-            <img alt="album cover" src={album.data.photos[0].photo.url} />
+            <Image
+              dimensions={album.data.photos[0].photo.dimensions}
+              src={album.data.photos[0].photo.url}
+            />
           </a>
           <time datetime={album.data.date}>{formatDate(album.data.date)}</time>
           <h3>{PrismicDOM.RichText.asText(album.data.name)}</h3>

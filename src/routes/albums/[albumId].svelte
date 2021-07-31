@@ -11,6 +11,7 @@
   import { afterUpdate } from 'svelte';
   import PrismicDOM from 'prismic-dom';
   import { formatDate } from './_formatDate';
+  import Image from '../../comonents/Image.svelte';
   import Links from '../../comonents/Links.svelte';
 
   export let album;
@@ -36,11 +37,11 @@
     overflow-y: scroll;
   }
 
-  .container img {
-    max-width: 100%;
-    max-height: 100%;
+  .container :global(.photo) {
+    width: auto;
+    height: 100%;
     margin: 0 32px;
-    object-fit: contain;
+    object-fit: cover;
   }
 
   .info-block {
@@ -108,7 +109,7 @@
       flex-direction: column;
     }
 
-    .container img {
+    .container :global(.photo) {
       margin: 16px 0;
     }
 
@@ -140,7 +141,9 @@
     <time datetime={album.data.date}>{formatDate(album.data.date, true)}</time>
     <p class="model-name">{PrismicDOM.RichText.asText(album.data.model)}</p>
   </div>
-  {#each album.data.photos as { photo }}<img src={photo.url} />{/each}
+  {#each album.data.photos as { photo } (photo.url)}
+    <Image class="photo" dimensions={photo.dimensions} src={photo.url} />
+  {/each}
   {#if nextAlbum}
     <div class="outro">
       <a href="/albums/{nextAlbum.id}">Next</a>
