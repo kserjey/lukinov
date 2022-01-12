@@ -8,10 +8,11 @@
 </script>
 
 <script>
-  import { afterUpdate } from 'svelte';
+  import { afterUpdate, onMount } from 'svelte';
   import PrismicDOM from 'prismic-dom';
   import { formatDate } from './_formatDate';
   import Links from '../../comonents/Links.svelte';
+  import { getImgixSrcset } from '../../utils/getImgixSrcset';
 
   export let album;
   export let nextAlbum;
@@ -19,6 +20,11 @@
 
   let prevAlbum;
   let containerEl;
+  let screenHeight = null;
+
+  onMount(() => {
+    screenHeight = screen.height;
+  });
 
   afterUpdate(() => {
     if (prevAlbum?.id !== album) {
@@ -140,7 +146,11 @@
     <time datetime={album.data.date}>{formatDate(album.data.date, true)}</time>
     <p class="model-name">{PrismicDOM.RichText.asText(album.data.model)}</p>
   </div>
-  {#each album.data.photos as { photo }}<img src={photo.url} />{/each}
+  {#if screenHeight}
+    {#each album.data.photos as { photo } (photo.url)}
+      <img srcset={getImgixSrcset(photo.url, undefined, screenHeight)} />
+    {/each}
+  {/if}
   {#if nextAlbum}
     <div class="outro">
       <a href="/albums/{nextAlbum.id}">Next</a>

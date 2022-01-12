@@ -1,8 +1,10 @@
-export function getImgixSrcset(url, width) {
+export function getImgixSrcset(url, width, height) {
   const urls = [];
+  const widthQuery = width ? `&w=${width}` : '';
+  const heightQuery = height ? `&h=${height}` : '';
 
   for (let i = 0; i < 3; i += 1) {
-    urls.push(`${url}&w=${width}&dpr=${i + 1} ${i + 1}x`);
+    urls.push(`${url}${widthQuery}${heightQuery}&dpr=${i + 1} ${i + 1}x`);
   }
 
   return urls.join(', ');
