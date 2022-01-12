@@ -8,6 +8,7 @@
   import { onMount } from 'svelte';
   import PrismicDOM from 'prismic-dom';
   import { formatDate } from './_formatDate';
+  import { getImgixSrcset } from '../../utils/getImgixSrcset';
 
   export let albums = [];
   export let hasMore;
@@ -98,7 +99,10 @@
       {#each albumsByYear[year] as album (album.id)}
         <article class="album">
           <a href="/albums/{album.id}">
-            <img alt="album cover" src={album.data.photos[0].photo.url} />
+            <img
+              alt="album cover"
+              srcset={getImgixSrcset(album.data.photos[0].photo.url, 256)}
+            />
           </a>
           <time datetime={album.data.date}>{formatDate(album.data.date)}</time>
           <h3>{PrismicDOM.RichText.asText(album.data.name)}</h3>
