@@ -1,16 +1,15 @@
 import Prismic from 'prismic-javascript';
 import { client } from '../../utils/client';
 
-export async function get(req, res, next) {
+export async function get({ url }) {
   const { next_page: nextPage, results } = await client.query(
     Prismic.Predicates.at('document.type', 'album'),
     {
       orderings: '[my.album.date desc]',
       pageSize: 100,
-      page: req.query.page,
+      page: url.searchParams.get('page'),
     }
   );
 
-  res.writeHead(200, { 'Content-Type': 'application/json' });
-  res.end(JSON.stringify({ albums: results, hasMore: nextPage !== null }));
+  return { body: { albums: results, hasMore: nextPage !== null } };
 }

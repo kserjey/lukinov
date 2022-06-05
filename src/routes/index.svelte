@@ -1,12 +1,15 @@
 <script context="module">
-  export async function preload() {
-    return this.fetch('index.json').then((res) => res.json());
+  export async function load({ fetch }) {
+    const props = await fetch('/homepage.json').then((res) => res.json());
+    return { props };
   }
 </script>
 
 <script>
   import MediaQuery from '../comonents/MediaQuery.svelte';
 
+  // TODO: проверить относительные ссылки (теперь от current page)
+  // href и fetch внутри load-функций
   export let landscapePhoto;
   export let portraitPhoto;
 </script>
@@ -39,10 +42,6 @@
     transform: translateX(-50%);
   }
 </style>
-
-<svelte:head>
-  <title>Home</title>
-</svelte:head>
 
 <MediaQuery query="(max-aspect-ratio: 3/4)" let:matches>
   <div

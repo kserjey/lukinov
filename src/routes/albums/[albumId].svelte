@@ -1,9 +1,9 @@
 <script context="module">
-  export async function preload({ params }) {
+  export async function load({ params, fetch }) {
     return Promise.all([
-      this.fetch(`albums/${params.albumId}.json`).then((res) => res.json()),
-      this.fetch('contact.json').then((res) => res.json()),
-    ]).then(([data, { links }]) => ({ ...data, links }));
+      fetch(`/albums/${params.albumId}.json`).then((res) => res.json()),
+      fetch('/contact.json').then((res) => res.json()),
+    ]).then(([data, { links }]) => ({ props: { ...data, links } }));
   }
 </script>
 

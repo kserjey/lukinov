@@ -1,14 +1,12 @@
 import { client } from '../utils/client';
 
-export async function get(req, res, next) {
+export async function get() {
   const {
     data: { vk_link, instagram_link, phone_number, email, ...data },
   } = await client.getSingle('about_me');
 
-  res.writeHead(200, { 'Content-Type': 'application/json' });
-
-  res.end(
-    JSON.stringify({
+  return {
+    body: {
       ...data,
       links: {
         email,
@@ -16,6 +14,6 @@ export async function get(req, res, next) {
         instagramLink: instagram_link,
         phoneNumber: phone_number,
       },
-    })
-  );
+    },
+  };
 }

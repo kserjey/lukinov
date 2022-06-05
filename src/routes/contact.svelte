@@ -1,6 +1,7 @@
 <script context="module">
-  export async function preload({ params, query }) {
-    return this.fetch('contact.json').then((res) => res.json());
+  export async function load({ fetch }) {
+    const props = await fetch('/contact.json').then((res) => res.json());
+    return { props };
   }
 </script>
 
@@ -38,7 +39,6 @@
     display: flex;
     flex-direction: column;
     justify-content: space-around;
-    /* todo: padding and box-sizing */
     margin-right: 32px;
   }
 

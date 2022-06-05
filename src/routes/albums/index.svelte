@@ -1,6 +1,7 @@
 <script context="module">
-  export async function preload({ params, query }) {
-    return this.fetch('albums.json').then((res) => res.json());
+  export async function load({ fetch }) {
+    const props = await fetch('/albums.json').then((res) => res.json());
+    return { props };
   }
 </script>
 

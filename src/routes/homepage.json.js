@@ -1,16 +1,14 @@
 import { client } from '../utils/client';
 
-export async function get(req, res, next) {
+export async function get() {
   const { data } = await client.getSingle('homepage');
 
-  res.writeHead(200, { 'Content-Type': 'application/json' });
-
-  res.end(
-    JSON.stringify({
+  return {
+    body: {
       leftPhoto: data.left_photo,
       rightPhoto: data.right_photo,
       landscapePhoto: data.landscape_photo,
       portraitPhoto: data.portrait_photo,
-    })
-  );
+    },
+  };
 }

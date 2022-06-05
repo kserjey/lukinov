@@ -1,8 +1,6 @@
 <script>
   export let status;
   export let error;
-
-  const dev = process.env.NODE_ENV === 'development';
 </script>
 
 <style>
@@ -34,8 +32,9 @@
 
 <h1>{status}</h1>
 
-<p>{error.message}</p>
+<!-- TODO: error === undefined непонятно почему, когда мигрировал и были проблемы с load-функцией -->
+<p>{error?.message}</p>
 
-{#if dev && error.stack}
+{#if import.meta.env.DEV && error?.stack}
   <pre>{error.stack}</pre>
 {/if}

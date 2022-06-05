@@ -1,6 +1,5 @@
 <script>
-  import { stores } from '@sapper/app';
-  const { page } = stores();
+  import { page } from '$app/stores';
 </script>
 
 <style>
@@ -19,9 +18,9 @@
   }
 </style>
 
-{#if $page.path !== '/'}
+{#if $page.url.pathname !== '/'}
   <nav>
-    {#if $page.path === '/albums' || $page.path === '/albums/'}
+    {#if $page.url.pathname === '/albums' || $page.url.pathname === '/albums/'}
       <a href="/">Main</a>
     {:else}<a href="/albums">Albums</a>{/if}
     <a href="/contact">Contact</a>
