@@ -28,6 +28,7 @@
 
   afterUpdate(() => {
     if (prevAlbum?.id !== album) {
+      containerEl.scrollTop = 0;
       containerEl.scrollLeft = 0;
     }
   });
