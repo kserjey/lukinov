@@ -3,6 +3,7 @@
 
   export let vkLink;
   export let instagramLink;
+  export let telegramLink;
   export let phoneNumber;
   export let email;
 
@@ -10,6 +11,7 @@
     { name: 'vk', link: PrismicDOM.Link.url(vkLink) },
     { name: 'instagram', link: PrismicDOM.Link.url(instagramLink) },
     { name: 'email', link: email && `mailto:${email}` },
+    { name: 'telegram', link: PrismicDOM.Link.url(telegramLink) },
     { name: 'phone', link: phoneNumber && `tel:${phoneNumber}` },
   ].filter((item) => !!item.link);
 </script>

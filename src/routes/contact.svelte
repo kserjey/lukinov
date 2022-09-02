@@ -59,6 +59,7 @@
   }
 
   .location p {
+    margin-bottom: 16px;
     font-size: 24px;
     text-align: center;
   }
@@ -85,7 +86,6 @@
     </div>
     <div class="location">
       <p>Saint-Petersburg, Russia</p>
-      <p>{links.email}</p>
     </div>
     <Links {...links} />
   </div>
