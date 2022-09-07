@@ -24,7 +24,9 @@
     "prettier": "^2.1.2",
     "prettier-plugin-svelte": "^1.4.1",
     "svelte": "^3.29.4",
-    "svelte-infinite-scroll": "^1.5.1"
+    "svelte-infinite-scroll": "^1.5.1",
+    "svelte-preprocess": "^4.10.7",
+    "typescript": "^4.8.2"
   },
   "husky": {
     "hooks": {
