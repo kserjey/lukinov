@@ -64,6 +64,7 @@
 
   .album img {
     max-width: 100%;
+    background: var(--grey);
   }
 
   .album time {
@@ -73,7 +74,7 @@
   }
 
   .album h3 {
-    color: #b2b1b1;
+    color: var(--grey);
     font-size: 18px;
   }
 

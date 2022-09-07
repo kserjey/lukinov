@@ -19,7 +19,7 @@
 <style>
   .container {
     text-align: center;
-    color: #000000;
+    color: var(--black);
   }
 
   .links {

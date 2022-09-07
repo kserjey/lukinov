@@ -72,12 +72,12 @@
 
   .info-block .description {
     margin-bottom: 8px;
-    color: #b2b1b1;
+    color: var(--grey);
     font-size: 32px;
   }
 
   .info-block .model-name {
-    color: #b2b1b1;
+    color: var(--grey);
     text-transform: uppercase;
   }
 
@@ -87,20 +87,20 @@
     max-width: 100%;
     width: 512px;
     text-align: center;
-    color: #b2b1b1;
+    color: var(--grey);
   }
 
   .outro a {
     display: block;
     margin-bottom: 16px;
-    color: #000000;
+    color: var(--black);
     font-family: 'Yeseva One', cursive;
     font-size: 72px;
   }
 
   .outro h3 {
     margin-bottom: 8px;
-    color: #000000;
+    color: var(--black);
     font-size: 24px;
     text-transform: uppercase;
   }

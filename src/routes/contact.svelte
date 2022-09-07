@@ -55,7 +55,7 @@
   }
 
   .description :global(p) {
-    color: #b2b1b1;
+    color: var(--grey);
   }
 
   .location p {
