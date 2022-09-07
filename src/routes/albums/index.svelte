@@ -49,6 +49,7 @@
   }
 
   .year-album h2 {
+    min-width: 200px;
     margin-right: 32px;
     font-size: 72px;
   }
