@@ -13,6 +13,7 @@
   import { formatDate } from './_formatDate';
   import Links from '../../comonents/Links.svelte';
   import { getImgixSrcset } from '../../utils/getImgixSrcset';
+  import Image from '../../comonents/Image.svelte';
 
   export let album;
   export let nextAlbum;
@@ -43,9 +44,7 @@
     overflow-y: scroll;
   }
 
-  .container img {
-    max-width: 100%;
-    max-height: 100%;
+  .container :global(.image) {
     margin: 0 32px;
     object-fit: contain;
   }
@@ -115,7 +114,7 @@
       flex-direction: column;
     }
 
-    .container img {
+    .container :global(.image) {
       margin: 16px 0;
     }
 
@@ -149,7 +148,12 @@
   </div>
   {#if screenHeight}
     {#each album.data.photos as { photo } (photo.url)}
-      <img srcset={getImgixSrcset(photo.url, undefined, screenHeight)} />
+      <Image
+        class="image"
+        {photo}
+        srcset={getImgixSrcset(photo.url, undefined, screenHeight)}
+        loading="lazy"
+      />
     {/each}
   {/if}
   {#if nextAlbum}

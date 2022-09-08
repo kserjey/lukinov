@@ -10,6 +10,7 @@
   import PrismicDOM from 'prismic-dom';
   import { formatDate } from './_formatDate';
   import { getImgixSrcset } from '../../utils/getImgixSrcset';
+  import Image from '../../comonents/Image.svelte';
 
   export let albums = [];
   export let hasMore;
@@ -62,11 +63,6 @@
     justify-content: space-evenly;
   }
 
-  .album img {
-    max-width: 100%;
-    background: var(--grey);
-  }
-
   .album time {
     margin-top: 32px;
     margin-bottom: 8px;
@@ -102,8 +98,8 @@
       {#each albumsByYear[year] as album (album.id)}
         <article class="album">
           <a href="/albums/{album.id}">
-            <img
-              alt="album cover"
+            <Image
+              photo={album.data.photos[0].photo}
               srcset={getImgixSrcset(album.data.photos[0].photo.url, 256)}
             />
           </a>

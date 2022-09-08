@@ -11,6 +11,7 @@
 
   export let photo: Photo;
   export let srcset: string;
+  export let loading: string | undefined = undefined;
 </script>
 
 <style>
@@ -22,8 +23,10 @@
 </style>
 
 <img
+  class={$$restProps.class}
   width={photo.dimensions.width}
   height={photo.dimensions.height}
   alt={photo.alt}
   {srcset}
+  {loading}
 />
