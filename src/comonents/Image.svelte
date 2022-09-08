@@ -11,7 +11,6 @@
 
   export let photo: Photo;
   export let srcset: string;
-  export let loading: string | undefined = undefined;
 </script>
 
 <style>
@@ -28,5 +27,5 @@
   height={photo.dimensions.height}
   alt={photo.alt}
   {srcset}
-  {loading}
+  loading="lazy"
 />

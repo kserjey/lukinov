@@ -152,7 +152,6 @@
         class="image"
         {photo}
         srcset={getImgixSrcset(photo.url, undefined, screenHeight)}
-        loading="lazy"
       />
     {/each}
   {/if}
