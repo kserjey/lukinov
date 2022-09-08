@@ -1,4 +1,4 @@
-export function getImgixSrcset(url, width, height) {
+export function getImgixSrcset(url: string, width?: number, height?: number) {
   const urls = [];
   const widthQuery = width ? `&w=${width}` : '';
   const heightQuery = height ? `&h=${height}` : '';
