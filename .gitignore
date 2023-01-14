@@ -4,3 +4,5 @@ yarn-error.log
 /cypress/screenshots/
 /.svelte-kit/
 .env
+build
+.netlify
