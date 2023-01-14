@@ -27,5 +27,4 @@
   height={photo.dimensions.height}
   alt={photo.alt}
   {srcset}
-  loading="lazy"
 />
