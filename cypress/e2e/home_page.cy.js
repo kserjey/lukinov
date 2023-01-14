@@ -1,5 +1,5 @@
-describe('The Home Page', () => {
-  it('renders the heading and loads an image', () => {
+describe('Home Page', () => {
+  it('renders the heading, loads an image and goes to albums', () => {
     if (Cypress.browser.family === 'chromium') {
       Cypress.automation('remote:debugger:protocol', {
         command: 'Network.setCacheDisabled',
@@ -11,9 +11,7 @@ describe('The Home Page', () => {
     cy.visit('/');
 
     cy.wait('@imageRequest').its('response.statusCode').should('eq', 200);
-  });
 
-  it('goes to albums', () => {
     cy.findByRole('link', { name: 'arrow bottom' }).click();
     cy.url().should('include', '/albums');
   });
